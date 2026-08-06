@@ -30,7 +30,6 @@ public class Bai4 {
                 System.out.println("Tam giác đều");
             } 
             else if (a == b || a == c || b == c) {
-
                 if (a * a + b * b == c * c ||
                     a * a + c * c == b * b ||
                     b * b + c * c == a * a) {
@@ -39,7 +38,6 @@ public class Bai4 {
                 } else {
                     System.out.println("Tam giác cân");
                 }
-
             } 
             else if (a * a + b * b == c * c ||
                      a * a + c * c == b * b ||
@@ -50,7 +48,6 @@ public class Bai4 {
             else {
                 System.out.println("Tam giác thường");
             }
-
         } else {
             System.out.println("Không phải tam giác");
         }
