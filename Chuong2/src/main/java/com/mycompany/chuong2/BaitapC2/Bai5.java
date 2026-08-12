@@ -4,20 +4,17 @@
  */
 package com.mycompany.chuong2.BaitapC2;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author DELL
  */
-public class Bai4 extends javax.swing.JFrame {
+public class Bai5 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bai4
+     * Creates new form Bai5
      */
-    public Bai4() {
+    public Bai5() {
         initComponents();
-        setTitle("Image Viewer");
     }
 
     /**
@@ -32,12 +29,15 @@ public class Bai4 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Image Viewer");
+        setTitle("Digital Clock");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Công Nghệ JAVA\\Chuong2\\src\\main\\java\\com\\mycompany\\chuong2\\BaitapC2\\cat.PNG")); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("jLabel1");
+        jLabel1.setText(java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy")));
         getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        pack();
+        setBounds(0, 0, 416, 308);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -57,20 +57,20 @@ public class Bai4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Bai4().setVisible(true);
+                new Bai5().setVisible(true);
             }
         });
     }

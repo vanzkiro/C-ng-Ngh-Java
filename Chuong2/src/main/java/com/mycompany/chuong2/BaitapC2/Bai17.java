@@ -4,20 +4,17 @@
  */
 package com.mycompany.chuong2.BaitapC2;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author DELL
  */
-public class Bai4 extends javax.swing.JFrame {
+public class Bai17 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bai4
+     * Creates new form Bai17
      */
-    public Bai4() {
+    public Bai17() {
         initComponents();
-        setTitle("Image Viewer");
     }
 
     /**
@@ -30,14 +27,30 @@ public class Bai4 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Image Viewer");
+        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Công Nghệ JAVA\\Chuong2\\src\\main\\java\\com\\mycompany\\chuong2\\BaitapC2\\cat.PNG")); // NOI18N
-        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
+        jLabel1.setText("Username");
+        getContentPane().add(jLabel1);
 
-        pack();
+        jTextField1.setText("username");
+        getContentPane().add(jTextField1);
+
+        jLabel2.setText("Password");
+        getContentPane().add(jLabel2);
+
+        jPasswordField1.setText("*************");
+        getContentPane().add(jPasswordField1);
+
+        jButton1.setText("Login");
+        getContentPane().add(jButton1);
+
+        setBounds(0, 0, 382, 208);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -57,25 +70,29 @@ public class Bai4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai17.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai17.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai17.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai17.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Bai4().setVisible(true);
+                new Bai17().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

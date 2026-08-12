@@ -4,20 +4,17 @@
  */
 package com.mycompany.chuong2.BaitapC2;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author DELL
  */
-public class Bai4 extends javax.swing.JFrame {
+public class Bai12 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bai4
+     * Creates new form Bai12
      */
-    public Bai4() {
+    public Bai12() {
         initComponents();
-        setTitle("Image Viewer");
     }
 
     /**
@@ -32,10 +29,25 @@ public class Bai4 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Image Viewer");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Công Nghệ JAVA\\Chuong2\\src\\main\\java\\com\\mycompany\\chuong2\\BaitapC2\\cat.PNG")); // NOI18N
-        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
+        jLabel1.setText("Custom Look and Feel");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jLabel1)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(136, 136, 136))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -51,26 +63,26 @@ public class Bai4 extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Bai4().setVisible(true);
+                new Bai12().setVisible(true);
             }
         });
     }

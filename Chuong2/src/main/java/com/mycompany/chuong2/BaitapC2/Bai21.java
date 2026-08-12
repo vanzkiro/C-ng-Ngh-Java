@@ -4,20 +4,18 @@
  */
 package com.mycompany.chuong2.BaitapC2;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author DELL
  */
-public class Bai4 extends javax.swing.JFrame {
+public class Bai21 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bai4
+     * Creates new form Bai21
      */
-    public Bai4() {
+    public Bai21() {
         initComponents();
-        setTitle("Image Viewer");
+        jLabel1.setText("Số lượng danh mục: " + jList1.getModel().getSize());
     }
 
     /**
@@ -29,15 +27,25 @@ public class Bai4 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Image Viewer");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Công Nghệ JAVA\\Chuong2\\src\\main\\java\\com\\mycompany\\chuong2\\BaitapC2\\cat.PNG")); // NOI18N
-        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Cần Thơ", "Huế", "Nha Trang", "Đà Lạt", "Quy Nhơn", "Vũng Tàu" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
-        pack();
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_END);
+
+        setBounds(0, 0, 316, 408);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -57,25 +65,27 @@ public class Bai4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai21.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai21.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai21.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Bai4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Bai21.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Bai4().setVisible(true);
+                new Bai21().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
