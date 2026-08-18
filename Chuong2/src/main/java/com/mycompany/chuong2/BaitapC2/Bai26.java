@@ -81,7 +81,6 @@ public class Bai26 extends javax.swing.JFrame {
         // Lấy giá trị hiện tại của JSlider (từ 0 đến 255)
         int val = sldBrightness.getValue();
 
-        // Cập nhật câu thông báo số giá trị lên JLabel
         lblValue.setText("Giá trị: " + val);
 
         // Đổi màu nền của JFrame theo độ sáng màu xám RGB (val, val, val)

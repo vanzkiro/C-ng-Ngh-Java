@@ -79,7 +79,6 @@ public class Bai22 extends javax.swing.JFrame {
             String traicay = cboTraiCay.getSelectedItem().toString();
             lbkq.setText("Bạn đã chọn: " + traicay);
         }
-        
     }//GEN-LAST:event_cboTraiCayItemStateChanged
 
     /**

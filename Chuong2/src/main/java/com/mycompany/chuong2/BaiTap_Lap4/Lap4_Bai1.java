@@ -28,13 +28,13 @@ public class Lap4_Bai1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblCountdown = new javax.swing.JLabel();
+        lbkq = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
-        txtSeconds = new javax.swing.JTextField();
+        txtN = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblCountdown.setText("Thời gian:");
+        lbkq.setText("Sẵn sàng");
 
         btnStart.setText("Bắt đầu");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -55,19 +55,19 @@ public class Lap4_Bai1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCountdown)
-                            .addComponent(txtSeconds, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbkq)
+                            .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(txtSeconds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnStart)
                 .addGap(18, 18, 18)
-                .addComponent(lblCountdown)
+                .addComponent(lbkq)
                 .addContainerGap(172, Short.MAX_VALUE))
         );
 
@@ -75,49 +75,41 @@ public class Lap4_Bai1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        // TODO add your handling code here:
-        int totalSeconds;
-            try {
-                totalSeconds = Integer.parseInt(txtSeconds.getText().trim());
-                if (totalSeconds <= 0) {
-                    lblCountdown.setText("Vui lòng nhập số giây > 0!");
-                    return;
+
+           int total;
+           try{
+               total = Integer.parseInt(txtN.getText().trim());
+               if(total <= 0){
+                   lbkq.setText("Vui lòng nhập số lớn hon 0");
+                   return;
+               }
+           }catch(NumberFormatException ex){
+               lbkq.setText("Vui lòng nhập lại");
+               return;
+           }
+           btnStart.setEnabled(false);
+           SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>(){
+               @Override
+               protected Void doInBackground() throws Exception{
+                   for(int i = total; i >= 0; i--){
+                       publish(i);
+                       Thread.sleep(1000);
+                   }
+                   return null;
+               }
+               @Override
+               protected void process(java.util.List<Integer> ds){
+                   int remain = ds.get(ds.size() - 1);
+                   lbkq.setText("Thời gian còn lại " + remain + "giây.");
+                   
+               }
+               @Override 
+               protected void done(){
+                   lbkq.setText("Hết giờ");
+                   btnStart.setEnabled(true);
                 }
-            } catch (NumberFormatException e) {
-                lblCountdown.setText("Số giây không hợp lệ!");
-                return;
-            }
-        SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
-        
-            @Override
-            protected Void doInBackground() throws Exception {
-                // Vòng lặp đếm ngược từng giây một
-                for (int i = totalSeconds; i >= 0; i--) {
-                    publish(i);          // Đẩy số giây còn lại sang hàm process()
-                    Thread.sleep(1000);   // Tạm dừng 1 giây ở luồng ẩn
-                }
-                return null;
-            }
-
-            @Override
-            protected void process(java.util.List<Integer> chunks) {
-                // Lấy số giây còn lại mới nhất
-                int remaining = chunks.get(chunks.size() - 1);
-                lblCountdown.setText("Thời gian còn lại: " + remaining + " giây");
-            }
-
-            @Override
-            protected void done() {
-                // Khi đếm ngược xong (i = 0)
-                lblCountdown.setText("Hết giờ!");
-                btnStart.setEnabled(true);   // Mở lại nút bấm
-                txtSeconds.setEnabled(true); // Mở lại ô nhập
-            }
-        };
-
-        // 4. Bắt đầu chạy luồng đếm ngược
-        worker.execute();
-        
+           };
+           worker.execute();
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
@@ -157,7 +149,7 @@ public class Lap4_Bai1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
-    private javax.swing.JLabel lblCountdown;
-    private javax.swing.JTextField txtSeconds;
+    private javax.swing.JLabel lbkq;
+    private javax.swing.JTextField txtN;
     // End of variables declaration//GEN-END:variables
 }
