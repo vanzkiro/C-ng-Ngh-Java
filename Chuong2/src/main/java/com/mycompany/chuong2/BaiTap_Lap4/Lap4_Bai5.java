@@ -105,13 +105,14 @@ public class Lap4_Bai5 extends javax.swing.JFrame {
 //        JFileChooser fc = new JFileChooser();
 //        if(fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
 //            selectedFile = fc.getSelectedFile();
-//            lbFile.setText("File:" + selectedFile.getName());
+//            lbFile.setText("File" + selectedFile.getName());
 //        }
-        JFileChooser fc = new JFileChooser();
-        if(fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-            selectedFile = fc.getSelectedFile();
-            lbFile.setText("File" + selectedFile.getName());
-        }
+          
+          JFileChooser fc = new JFileChooser();
+          if(fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+              selectedFile = fc.getSelectedFile();
+              lbFile.setText("File: " + selectedFile.getName());
+          }
         
     }//GEN-LAST:event_btnFileActionPerformed
 
