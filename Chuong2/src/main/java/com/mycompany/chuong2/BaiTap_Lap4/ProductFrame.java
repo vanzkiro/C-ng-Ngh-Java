@@ -4,7 +4,10 @@
  */
 package com.mycompany.chuong2.BaiTap_Lap4;
 
+import static java.awt.Label.CENTER;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +21,15 @@ public class ProductFrame extends javax.swing.JFrame {
      */
     public ProductFrame() {
         initComponents();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < tblSanPham.getColumnCount(); i++) {
+            tblSanPham.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
+        ((DefaultTableCellRenderer) tblSanPham.getTableHeader().getDefaultRenderer())
+                .setHorizontalAlignment(SwingConstants.CENTER);
         // Tự động tính đơn giá
         txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -52,6 +64,7 @@ public class ProductFrame extends javax.swing.JFrame {
         return isAlphanumeric && hasLetter && hasDigit;
     }
 
+  
     // Xóa trắng các ô nhập liệu
     private void clearForm() {
         txtMaSP.setText("");
@@ -232,7 +245,6 @@ public class ProductFrame extends javax.swing.JFrame {
             return;
         }
 
-        // Kiểm tra trùng mã SP (Đã sửa lỗi NullPointerException)
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             Object val = tableModel.getValueAt(i, 0);
             if (val != null && val.toString().equalsIgnoreCase(ma)) {
@@ -299,7 +311,6 @@ public class ProductFrame extends javax.swing.JFrame {
 
                 txtDonGia.setText(String.format("%.0f", gia));
 
-                // Cập nhật giá trị vào dòng đã chọn trong Bảng
                 tableModel.setValueAt(ten, selectedRow, 1);
                 tableModel.setValueAt(sl, selectedRow, 2);
                 tableModel.setValueAt(gia, selectedRow, 3);
