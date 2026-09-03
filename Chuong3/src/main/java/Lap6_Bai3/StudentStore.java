@@ -27,4 +27,27 @@ public class StudentStore {
     public static void add(Student student) {
         students.add(student);
     }
+
+    // 1. Tìm sinh viên theo Mã SV (id)
+    public static Student findById(String id) {
+        if (id == null) return null;
+        for (Student s : students) {
+            if (id.equalsIgnoreCase(s.getId())) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    // 2. Cập nhật thông tin sinh viên
+    public static void update(Student updatedStudent) {
+        if (updatedStudent == null || updatedStudent.getId() == null) return;
+        
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId().equalsIgnoreCase(updatedStudent.getId())) {
+                students.set(i, updatedStudent); // Ghi đè đối tượng cũ bằng đối tượng mới
+                break;
+            }
+        }
+    }
 }

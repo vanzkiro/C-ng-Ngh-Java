@@ -1,6 +1,5 @@
 <%-- 
-    Document   : login
-    Created on : Aug 27, 2026, 11:11:43 AM
+    Document   : Lap6_Bai4_login
     Author     : DELL
 --%>
 
@@ -8,18 +7,35 @@
 <%
     request.setCharacterEncoding("UTF-8");
     
+    // Xử lý đăng xuất
+    String action = request.getParameter("action");
+    if ("logout".equals(action)) {
+        session.invalidate();
+        response.sendRedirect(request.getContextPath() + "/Lap6_Bai4_login.jsp");
+        return;
+    }
+
     String errorMsg = "";
 
     if ("POST".equalsIgnoreCase(request.getMethod())) {
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
 
+        // Kiểm tra tài khoản Admin
         if ("admin".equals(user) && "123456".equals(pass)) {
             session.setAttribute("username", user);
-            
-            response.sendRedirect(request.getContextPath() + "/welcome.jsp");
+            session.setAttribute("role", "ADMIN"); // Gán quyền ADMIN
+            response.sendRedirect(request.getContextPath() + "/Lap6_Bai10_dashboard.jsp");
             return;
-        } else {
+        } 
+        // Kiểm tra tài khoản User
+        else if ("user".equals(user) && "123456".equals(pass)) {
+            session.setAttribute("username", user);
+            session.setAttribute("role", "USER"); // Gán quyền USER
+            response.sendRedirect(request.getContextPath() + "/Lap6_Bai10_dashboard.jsp");
+            return;
+        } 
+        else {
             errorMsg = "Tên đăng nhập hoặc mật khẩu không chính xác!";
         }
     }
@@ -40,15 +56,15 @@
             <div class="alert alert-danger text-center p-2"><%= errorMsg %></div>
         <% } %>
 
-        <form action="login.jsp" method="POST">
+        <form action="" method="POST">
             <div class="mb-3">
                 <label class="form-label font-weight-bold">Tên đăng nhập:</label>
-                <input type="text" name="username" class="form-control" placeholder="Nhập admin" required />
+                <input type="text" name="username" class="form-control" placeholder="admin hoặc user" required />
             </div>
 
             <div class="mb-3">
                 <label class="form-label font-weight-bold">Mật khẩu:</label>
-                <input type="password" name="password" class="form-control" placeholder="Nhập 123456" required />
+                <input type="password" name="password" class="form-control" placeholder="123456" required />
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>

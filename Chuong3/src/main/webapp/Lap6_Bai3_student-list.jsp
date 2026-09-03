@@ -8,9 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%-- NHÚNG CODE NẠP DANH SÁCH TỪ STORE VÀO REQUEST --%>
 <%
     request.setAttribute("students", StudentStore.findAll());
+    
+    // Lấy thông tin role từ Session
+    String role = (String) session.getAttribute("role");
+    boolean isAdmin = "ADMIN".equalsIgnoreCase(role);
+    request.setAttribute("isAdmin", isAdmin);
 %>
 
 <!DOCTYPE html>
@@ -24,11 +28,17 @@
 
     <h2 class="text-center text-primary mb-4">DANH SÁCH SINH VIÊN</h2>
 
-    <div class="mb-3 text-end">
-        <%-- Sửa lại đường dẫn khớp với tên file form thực tế --%>
-        <a href="${pageContext.request.contextPath}/Lap6_Bai3_student-form.jsp" class="btn btn-primary">
-            + Thêm sinh viên mới
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="${pageContext.request.contextPath}/Lap6_Bai10_dashboard.jsp" class="btn btn-secondary">
+            ← Quay lại Dashboard
         </a>
+        
+        <%-- Chỉ ADMIN mới thấy nút Thêm sinh viên --%>
+        <c:if test="${isAdmin}">
+            <a href="${pageContext.request.contextPath}/Lap6_Bai3_student-form.jsp" class="btn btn-primary">
+                + Thêm sinh viên mới
+            </a>
+        </c:if>
     </div>
 
     <table class="table table-bordered table-striped table-hover align-middle">
@@ -38,16 +48,28 @@
                 <th>Họ tên</th>
                 <th>Lớp</th>
                 <th>Email</th>
+                <c:if test="${isAdmin}">
+                    <th style="width: 120px;">Hành động</th>
+                </c:if>
             </tr>
         </thead>
         <tbody>
-            <%-- Sử dụng JSTL c:forEach để duyệt danh sách --%>
             <c:forEach var="sv" items="${students}">
                 <tr>
                     <td class="text-center"><strong>${sv.id}</strong></td>
                     <td>${sv.name}</td>
                     <td class="text-center">${sv.className}</td>
                     <td>${sv.email}</td>
+                    
+                    <%-- Chỉ ADMIN mới thấy cột và nút Sửa --%>
+                    <c:if test="${isAdmin}">
+                        <td class="text-center">
+                            <a href="${pageContext.request.contextPath}/Lap6_Bai8_student-edit.jsp?id=${sv.id}" 
+                               class="btn btn-sm btn-warning fw-bold">
+                                Sửa
+                            </a>
+                        </td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </tbody>
